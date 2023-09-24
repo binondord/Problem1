@@ -7,5 +7,5 @@ public:
     virtual void print() = 0;
 
     // TODO add virtual method addAt here
-
+    virtual void addAt(int num, int pos) = 0;
 };

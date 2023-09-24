@@ -11,14 +11,14 @@ class ArrayList : public List {
     int capacity = 5;
 
     void dynamic_add() {
-        int new_size = ceil(capacity * 1.5);
+        int new_size = (int) ceil(capacity * 1.5);
         int* new_array = (int*)realloc(array, sizeof(int) * new_size);
         array = new_array;
         capacity = new_size;
     }
 
     void dynamic_deduce() {
-        int new_size = ceil(capacity * 0.75);
+        int new_size = (int) ceil(capacity * 0.75);
         int* new_array = (int*)realloc(array, sizeof(int) * new_size);
         array = new_array;
         capacity = new_size;
@@ -33,9 +33,15 @@ public:
 
     void add(int num) {
         if (size == capacity) {
+            cout << "size === capacity: " << endl;
             dynamic_add();
+            cout << "size: " << size << endl;
+            cout << "capacity: " << capacity << endl;
         }
         array[size++] = num;
+
+        cout << "size: " << size << endl;
+        cout << "capacity: " << capacity << endl;
     }
 
     int remove(int num) {
@@ -65,6 +71,24 @@ public:
     }
 
     // TODO add method addAt here
+    void addAt(int num, int pos) {
+        if (size == capacity) {
+            cout << "size === capacity: " << endl;
+            dynamic_add();
+            cout << "size: " << size << endl;
+            cout << "capacity: " << capacity << endl;
+        }
+        size++;
+        for (int i = size; i >= pos; i--) {
+            array[i] = array[i - 1];
+        }
+
+        // insert x at pos
+        array[pos - 1] = num;
+
+        cout << "size: " << size << endl;
+        cout << "capacity: " << capacity << endl;
+    }
 
 
     void print() {
